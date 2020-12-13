@@ -1,4 +1,4 @@
-export default [
+const members = [
   {
     name: "Alaor",
     speciality: "MTB e Road bike",
@@ -108,3 +108,5 @@ export default [
     profile: "https://www.strava.com/athletes/39287052",
   },
 ];
+
+export default members;
