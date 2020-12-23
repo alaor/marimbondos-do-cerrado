@@ -13,6 +13,7 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
+import {DistanceFormat} from '../utilities/DistanceFormat';
 
 const useStyles = makeStyles((theme) => ({
   bullet: {
@@ -87,7 +88,7 @@ let Member = ({atleta, getAthleteData, selectedAthleteData, loading}) => {
             <> 
               <Typography paragraph>Maior pedalada:</Typography>
               <Typography paragraph>
-                {selectedAthleteData && selectedAthleteData.biggest_ride_distance} km
+                {selectedAthleteData && DistanceFormat(selectedAthleteData.biggest_ride_distance)} km
               </Typography>
               <Typography paragraph>Maior escalada:</Typography>
               <Typography paragraph>
