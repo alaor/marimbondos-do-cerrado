@@ -4,10 +4,11 @@ import members from "../members";
 import Grid from "@material-ui/core/Grid";
 
 const Members = () => {
+  
   const getMemberCard = (memberObj) => {
     return (
-      <Grid item xs={12} sm={4}>
-        <Member {...memberObj} />
+      <Grid item xs={12} sm={4} key={memberObj.name}>
+        <Member atleta={memberObj}/>
       </Grid>
     );
   };

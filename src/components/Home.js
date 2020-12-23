@@ -1,50 +1,50 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Background from "../img/bikers2.jpg";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import { connect } from 'react-redux'
+import {getAthleteData} from '../actions';
 
-const useStyles = makeStyles({
-  image: {
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    width: "100%",
-  },
-  button: {
-    position: "absolute",
-  },
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "row",
-    alignItems: "center",
-    position: "relative",
-  },
-});
 
-const Home = () => {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    height: "100vh",
+  },
+}));
+
+let Home = ({getAthleteData}) => {
   const classes = useStyles();
 
   return (
-    <>
-      <div className={classes.container}>
-        <img alt="" src={Background} className={classes.image} />
-        <Button
-          className={classes.button}
-          variant="contained"
-          color="secondary"
-          onClick={() =>
-            window.open(
-              "https://www.strava.com/clubs/marimbondosdocerrado",
-              "_blank"
-            )
-          }
-        >
-          Saiba mais
-        </Button>
-      </div>
-    </>
+    <div>
+      <Grid className={classes.root} container alignItems="center" justify="center">
+        <Grid item xs={12}>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() =>
+              window.open(
+                "https://www.strava.com/clubs/marimbondosdocerrado",
+                "_blank"
+              )
+              // getAthleteData()
+            }
+          >
+            Junte-se a nós
+          </Button>
+        </Grid>
+      </Grid>
+    </div>
   );
 };
+
+const mapDispatchToProps = {
+  getAthleteData: getAthleteData,
+};
+
+Home = connect(
+  null,
+  mapDispatchToProps,
+)(Home);
 
 export default Home;
