@@ -24,7 +24,6 @@ function* fetchAthleteData() {
     
     const userStats = yield fetch('https://www.strava.com/api/v3/athletes/22001130/stats?access_token=' + reAuthJson.access_token);
     const json = yield userStats.json();
-    console.log(json);
 
     yield put({ type: "SET_ATHLETE_DATA", data: json});
 }
