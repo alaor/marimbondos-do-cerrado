@@ -38,7 +38,7 @@ let Home = ({getAthleteData, setAthleteAuth, history, location}) => {
         },
     });
     }
-  }, []);
+  }, [history, location, setAthleteAuth]);
 
   return (
     <div>

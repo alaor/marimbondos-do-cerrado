@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import Container from '@material-ui/core/Container';
-import Divider from '@material-ui/core/Divider';
 import { Typography } from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -38,7 +37,7 @@ let Strava = ({loading, athleteAuth, selectedAthleteData, selectedAthleteActivit
             getAthleteData(athleteAuth);
             getAthleteActivities(athleteAuth);
         }
-    }, []);
+    }, [athleteAuth, getAthleteData, getAthleteActivities]);
 
     return (
         <Container maxWidth="lg" className={classes.accordion}>
