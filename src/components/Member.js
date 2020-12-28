@@ -6,14 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import { connect } from 'react-redux'
-import {getAthleteData} from '../actions';
-
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import clsx from 'clsx';
-import {DistanceFormat} from '../utilities/DistanceFormat';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   bullet: {
@@ -39,16 +32,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-let Member = ({atleta, getAthleteData, selectedAthleteData, loading}) => {
+let Member = ({atleta, selectedAthleteData, loading}) => {
   const classes = useStyles();
 
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    if (!selectedAthleteData) {
-      getAthleteData();
-    }    
-    setExpanded(!expanded);
+  const handleStravaClick = (idClient, clientSecret, refreshToken) => {
+    let link = 'https://www.strava.com/oauth/authorize?client_id='+idClient+'&response_type=code&redirect_uri=http://localhost:3000?clientSecret='+idClient+'-'+clientSecret+'-'+refreshToken+'&approval_prompt=force&scope=activity:read_all,profile:read_all';
+    window.open(link, "_self");
   };
 
   return (
@@ -66,10 +55,15 @@ let Member = ({atleta, getAthleteData, selectedAthleteData, loading}) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={() => window.open(atleta.profile, "_blank")}>
-          Ver perfil no strava
+        <Button size="small" onClick={() => {
+          if(atleta.name === 'Alaor') {
+            handleStravaClick(atleta.idClient, atleta.clientSecret, atleta.refreshToken)
+          } else {
+            window.open(atleta.profile, "_blank")
+          }}}>
+          Informações do Strava
         </Button>
-        {atleta.name === 'Alaor' &&
+        {/* {atleta.name === 'Alaor' &&
           <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
@@ -79,25 +73,8 @@ let Member = ({atleta, getAthleteData, selectedAthleteData, loading}) => {
           aria-label="Ver detalhes">     
             <ExpandMoreIcon />
           </IconButton>
-        }
+        } */}
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          {loading ?
-            <Typography paragraph>CARREGANDO...</Typography> :
-            <> 
-              <Typography paragraph>Maior pedalada:</Typography>
-              <Typography paragraph>
-                {selectedAthleteData && DistanceFormat(selectedAthleteData.biggest_ride_distance)} km
-              </Typography>
-              <Typography paragraph>Maior escalada:</Typography>
-              <Typography paragraph>
-                {selectedAthleteData && selectedAthleteData.biggest_climb_elevation_gain.toFixed(2)} M
-              </Typography>
-            </>
-          }
-        </CardContent>
-      </Collapse>
     </Card>
     </>
   );
@@ -108,13 +85,9 @@ const mapStateToProps = (state) => ({
   loading: state.loading,
 })
 
-const mapDispatchToProps = {
-  getAthleteData: getAthleteData,
-};
-
 Member = connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Member)
 
 export default Member;

@@ -2,8 +2,11 @@ const members = [
   {
     name: "Alaor",
     speciality: "MTB e Road bike",
-    ridesWhere: "BH e Camacho, Minas Gerais",
+    ridesWhere: "Camacho, Minas Gerais",
     profile: "https://www.strava.com/athletes/22001130",
+    idClient: '58116',
+    clientSecret: 'f7741e1da8a52f65fb099b24fcb09dc53cc299b0',
+    refreshToken: '59783880dadb9cc85d6fda7a9cde0223a20ebc0a',
   },
   {
     name: "Marciel",
@@ -30,7 +33,7 @@ const members = [
     profile: "https://www.strava.com/athletes/22001086",
   },
   {
-    name: "Carlos Eduardo (Dudu)",
+    name: "Dudu",
     speciality: "MTB",
     ridesWhere: "Camacho, Minas Gerais",
     profile: "https://www.strava.com/athletes/50325372",
@@ -50,13 +53,13 @@ const members = [
   {
     name: "Guilherme",
     speciality: "MTB e Road bike",
-    ridesWhere: "Itapecerica e Camacho, Minas Gerais",
+    ridesWhere: "Camacho, Minas Gerais",
     profile: "https://www.strava.com/athletes/8628339",
   },
   {
-    name: "Joel Teixeira",
+    name: "Joel",
     speciality: "MTB",
-    ridesWhere: "Cláudio e Camacho, Minas Gerais",
+    ridesWhere: "Camacho, Minas Gerais",
     profile: "https://www.strava.com/athletes/44266589",
   },
   {
@@ -80,7 +83,7 @@ const members = [
   {
     name: "Rafael",
     speciality: "MTB",
-    ridesWhere: "Cláudio e Camacho, Minas Gerais",
+    ridesWhere: "Camacho, Minas Gerais",
     profile: "https://www.strava.com/athletes/37306308",
   },
   {
@@ -96,7 +99,7 @@ const members = [
     profile: "https://www.strava.com/athletes/38609777",
   },
   {
-    name: "Silas Moreira",
+    name: "Silas",
     speciality: "MTB",
     ridesWhere: "BH, Minas Gerais",
     profile: "https://www.strava.com/athletes/49393837",
