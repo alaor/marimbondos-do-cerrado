@@ -36,7 +36,7 @@ let Member = ({atleta, selectedAthleteData, loading}) => {
   const classes = useStyles();
 
   const handleStravaClick = (idClient, clientSecret, refreshToken) => {
-    let link = 'https://www.strava.com/oauth/authorize?client_id='+idClient+'&response_type=code&redirect_uri=http://localhost:3000?clientSecret='+idClient+'-'+clientSecret+'-'+refreshToken+'&approval_prompt=force&scope=activity:read_all,profile:read_all';
+    let link = 'https://www.strava.com/oauth/authorize?client_id='+idClient+'&response_type=code&redirect_uri=http://marimbondosdocerrado-uat.netlify.app?clientSecret='+idClient+'-'+clientSecret+'-'+refreshToken+'&approval_prompt=force&scope=activity:read_all,profile:read_all';
     window.open(link, "_self");
   };
 
