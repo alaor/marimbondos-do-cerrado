@@ -22,12 +22,13 @@ let Home = ({getAthleteData, setAthleteAuth, history, location}) => {
     });
     let codeAuthStrava = params.code;
     if (codeAuthStrava) {
-      const [id, secret, refresh] = params.clientSecret.split("-");
+      const [id, secret, refresh, profileId] = params.clientSecret.split("-");
       let athleteAuth = {
         code: codeAuthStrava,
         idClient: id,
         secret: secret,
         refresh: refresh,
+        profileId: profileId,
       }
       setAthleteAuth(athleteAuth);
       history.push({

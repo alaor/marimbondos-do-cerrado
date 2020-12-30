@@ -35,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
 let Member = ({atleta, selectedAthleteData, loading}) => {
   const classes = useStyles();
 
-  const handleStravaClick = (idClient, clientSecret, refreshToken) => {
-    let link = 'https://www.strava.com/oauth/authorize?client_id='+idClient+'&response_type=code&redirect_uri=http://marimbondosdocerrado-uat.netlify.app?clientSecret='+idClient+'-'+clientSecret+'-'+refreshToken+'&approval_prompt=force&scope=activity:read_all,profile:read_all';
+  const handleStravaClick = (idClient, clientSecret, refreshToken, profileId) => {
+    let link = 'https://www.strava.com/oauth/authorize?client_id='+idClient+'&response_type=code&redirect_uri=http://localhost:3000?clientSecret='+idClient+'-'+clientSecret+'-'+refreshToken+'-'+profileId+'&approval_prompt=force&scope=activity:read_all,profile:read_all';
     window.open(link, "_self");
   };
 
@@ -56,24 +56,13 @@ let Member = ({atleta, selectedAthleteData, loading}) => {
       </CardContent>
       <CardActions>
         <Button size="small" onClick={() => {
-          if(atleta.name === 'Alaor') {
-            handleStravaClick(atleta.idClient, atleta.clientSecret, atleta.refreshToken)
+          if(atleta.apiEnabled) {
+            handleStravaClick(atleta.idClient, atleta.clientSecret, atleta.refreshToken, atleta.profileId)
           } else {
             window.open(atleta.profile, "_blank")
           }}}>
           Informações do Strava
-        </Button>
-        {/* {atleta.name === 'Alaor' &&
-          <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="Ver detalhes">     
-            <ExpandMoreIcon />
-          </IconButton>
-        } */}
+        </Button>        
       </CardActions>
     </Card>
     </>
